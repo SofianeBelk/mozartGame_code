@@ -10,7 +10,7 @@ object Concert extends App {
 
   val database =  system.actorOf(Props(new DataBaseActor()), "DataBaseActor")
   val player =    system.actorOf(Props(new PlayerActor(database)), "Player")
-  //database ! GetMeasure(0)
+  //database ! GetMeasure(176)
   val conductor : ActorRef  = system.actorOf(Props(new ConductorActor(player,system.actorOf(Props(new ProviderActor(database,conductor)), "provider"))), "Conductor") 
 
   conductor ! "StartGame" 
